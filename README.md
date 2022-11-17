@@ -1,16 +1,37 @@
-### Hi there 👋
+```go
+package main
 
-<!--
-**beardfriend/beardfriend** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+import (
+	"fmt"
+	"time"
+)
 
-Here are some ideas to get you started:
+func main() {
+	tunnelToSenior := make(chan string)
+	experienceHour := 3258
+	developingHourForDay := 9
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+	go func() {
+		for experienceHour < 15000 {
+			for i := 0; i < developingHourForDay; i++ {
+				time.Sleep(time.Hour * 1)
+				experienceHour++
+			}
+			time.Sleep(time.Hour * 15)
+		}
+		tunnelToSenior <- "I'm senior Programmer"
+	}()
+
+	go func() {
+		for {
+			fmt.Println("Make code easier to understand everyone")
+			fmt.Println("Work Hard, Play Hard")
+			fmt.Println("Everything is up to mind")
+		}
+	}()
+
+	sayLoud := <-tunnelToSenior
+	fmt.Println(sayLoud)
+	fmt.Println("Keep going...")
+}
+```
